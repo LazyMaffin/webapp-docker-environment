@@ -1,27 +1,41 @@
 # Docker workspace for PHP web applications (PHP+Nginx+MariaDB+Manticore)
 
-- PHP 8.1.18
-- Nginx:latest
-- MariaDB 10.11.5
-- Manticore:latest
+- PHP: php:8.1.18-fpm-alpine
+- Nginx: nginx:stable-alpine
+- MariaDB: yobasystems/alpine-mariadb:10.11.5
+- Manticore: manticoresearch/manticore
 
 **1**. Copy **.env-example** to **.env**
 ```shell script
 cp .env-example .env
 ```
 
-**2**. Place your project into **./projects** folder
+**2**. Copy **docker-compose-development.yml** or **docker-compose-production.yml** to **docker-compose.yml**
+```shell script
+cp docker-compose-development.yml docker-compose.yml
+--- OR ---
+cp docker-compose-production.yml docker-compose.yml
+```
+#### Tip:<br>
+You can use flag **-f** for docker-compose command to define configuration file:
+```shell script
+docker-compose -f docker-compose-development.yml up -d
+--- OR ---
+docker-compose -f docker-compose-production.yml up -d
+```
 
-**3**. Add nginx configurations for your project in **./nginx/conf.d/vhost.conf**
+**3**. Place your project into **./projects** folder
 
-**4**. Create containers and run:
+**4**. Add nginx configurations for your project in **./nginx/conf.d/vhost.conf**
+
+**5**. Create containers and run:
 ```shell script
 docker-compose build && docker-compose up -d
 ```
 
-##Tips:
+## Tips:
 
-###"extra_hosts"
+### "extra_hosts"
 You will probably want to allow access between applications (containers), so you need to add values for the **"extra_hosts"** options in **docker-compose.yaml** for the **php** container.
 
 ```
@@ -43,7 +57,7 @@ For **macOS**, you can find out your IP on the docker subnet using the following
 docker run -it alpine ping docker.for.mac.localhost
 ```
  
-###SSH keys
+### SSH keys
 If you need the SSH key in the **php** container then you can copy your current one to the ./ssh directory or generate a new one:
 
 ```shell script
