@@ -10,25 +10,36 @@
 cp .env-example .env
 ```
 
-**2**. Copy **docker-compose-development.yml** or **docker-compose-production.yml** to **docker-compose.yml**
+**2**. Create empty **php/php.ini** or copy from **php.ini-development** or **php.ini-production**
+```shell script
+touch php/php.ini
+--- OR ---
+cp php.ini-development php/php.ini
+--- OR ---
+cp php.ini-production php/php.ini
+```
+
+**3**. Create empty **nginx/conf.d/vhost.conf**
+
+**4**. Copy **docker-compose-development.yml** or **docker-compose-production.yml** to **docker-compose.yml**
 ```shell script
 cp docker-compose-development.yml docker-compose.yml
 --- OR ---
 cp docker-compose-production.yml docker-compose.yml
 ```
 #### Tip:<br>
-You can use flag **-f** for docker-compose command to define configuration file:
+You can use flag **-f** with docker-compose command to define configuration file:
 ```shell script
 docker-compose -f docker-compose-development.yml up -d
 --- OR ---
 docker-compose -f docker-compose-production.yml up -d
 ```
 
-**3**. Place your project into **./projects** folder
+**5**. Place your project into **./projects** folder
 
-**4**. Add nginx configurations for your project in **./nginx/conf.d/vhost.conf**
+**6**. Add nginx configurations for your project in **./nginx/conf.d/vhost.conf**
 
-**5**. Create containers and run:
+**7**. Create containers and run:
 ```shell script
 docker-compose build && docker-compose up -d
 ```

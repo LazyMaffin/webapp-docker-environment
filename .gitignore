@@ -1,5 +1,7 @@
 .env
 docker-compose.yml
+/nginx/conf.d/vhost.conf
+/php/php.ini
 
 /mariadb/data/**
 !/mariadb/data/.gitkeep
