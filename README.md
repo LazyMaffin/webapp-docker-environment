@@ -30,9 +30,9 @@ cp docker-compose-production.yml docker-compose.yml
 #### Tip:<br>
 You can use flag **-f** with docker-compose command to define configuration file:
 ```shell script
-docker-compose -f docker-compose-development.yml up -d
+docker compose -f docker-compose-development.yml up -d
 --- OR ---
-docker-compose -f docker-compose-production.yml up -d
+docker compose -f docker-compose-production.yml up -d
 ```
 
 **5**. Place your project into **./projects** folder
@@ -41,7 +41,7 @@ docker-compose -f docker-compose-production.yml up -d
 
 **7**. Create containers and run:
 ```shell script
-docker-compose build && docker-compose up -d
+docker compose build && docker compose up -d
 ```
 
 ## Tips:
