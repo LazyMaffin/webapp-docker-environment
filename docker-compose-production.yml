@@ -33,8 +33,6 @@ services:
       - ./mariadb/conf.d:/etc/mysql/conf.d
       - ./mariadb/logs:/var/log/mysql/
       - ./mariadb/dump:/dump
-    ports:
-      - "${MARIADB_PORT}:3306"
     security_opt:
       - seccomp:unconfined
     environment:
@@ -70,9 +68,6 @@ services:
     environment:
       - EXTRA=1
     restart: always
-    ports:
-      - "${MANTICORE_PORT_MYSQL}:9306"
-      - "${MANTICORE_PORT_HTTP}:9308"
     ulimits:
       nproc: 65535
       nofile:
