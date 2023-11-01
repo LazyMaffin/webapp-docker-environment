@@ -38,6 +38,7 @@ RUN apk add --update --no-cache --virtual build-essentials \
     docker-php-ext-install opcache && \
     docker-php-ext-install exif && \
     docker-php-ext-install zip && \
+    docker-php-ext-install bcmath && \
     apk del build-essentials && rm -rf /usr/src/php*
 
 RUN apk add --no-cache $PHPIZE_DEPS
