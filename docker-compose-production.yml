@@ -62,6 +62,30 @@ services:
     extra_hosts:
       - 'host.docker.internal:host-gateway'
 
+  php_cli:
+    build:
+      context: php
+      dockerfile: Dockerfile
+      args:
+        PHP_VERSION: ${PHP_VERSION}
+        PHP_XDEBUG: ${PHP_XDEBUG}
+        TZ: ${WORKSPACE_TIMEZONE}
+    working_dir: /var/www
+    container_name: php_cli$CONTAINER_POSTFIX
+    restart: "no"
+    volumes:
+      - ./.ssh:/home/www-data/.ssh
+      - ./projects:/var/www
+      - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
+    networks:
+      - backend
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+
   manticore:
     container_name: manticore$CONTAINER_POSTFIX
     image: manticoresearch/manticore
