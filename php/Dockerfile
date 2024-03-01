@@ -52,7 +52,7 @@ RUN if [ "$PHP_XDEBUG" = "on" ]; then \
     echo "xdebug.mode=develop,debug" >> /usr/local/etc/php/conf.d/xdebug.ini && \
     echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/conf.d/xdebug.ini && \
     echo "xdebug.start_with_request=yes" >> /usr/local/etc/php/conf.d/xdebug.ini && \
-    echo "xdebug.discover_client_host = 0" >> /usr/local/etc/php/conf.d/xdebug.ini \
+    echo "xdebug.discover_client_host = 0" >> /usr/local/etc/php/conf.d/xdebug.ini; \
 else \
     echo "Skip xdebug support"; \
 fi
